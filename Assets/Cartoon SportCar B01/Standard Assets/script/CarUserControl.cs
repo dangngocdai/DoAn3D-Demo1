@@ -17,18 +17,18 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Car = GetComponent<CarController>();
         }
 
-
+// Button Chân Ga: Di lên or xuống. tùy theo biến type của cần gạt
+// Button Chân Phanh: handBrake
+float handbrake = 0;
         private void FixedUpdate()
         {
             // pass the input to the car!
             float h = SimpleInput.GetAxis("Horizontal");
             input = CrossPlatformInputManager.GetAxis("Vertical");
 #if !MOBILE_INPUT
-            float handbrake = CrossPlatformInputManager.GetAxis("Jump");
-            m_Car.Move(h, input, input, handbrake);
-#else
-            m_Car.Move(h, input, input, 0f);
+            handbrake = CrossPlatformInputManager.GetAxis("Jump");    
 #endif
+ m_Car.Move(h, input, input, handbrake);
         }
 
         public void Forward(){
@@ -37,5 +37,11 @@ namespace UnityStandardAssets.Vehicles.Car
         public void Backward(){
             input = -1;
         }
+    }
+
+    public enum TypeStartusCar{
+        P,
+        N,
+        F,B
     }
 }
