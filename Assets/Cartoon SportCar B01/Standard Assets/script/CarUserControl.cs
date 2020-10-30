@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-using SimpleInputNamespace;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
@@ -25,9 +24,10 @@ float handbrake = 0;
             // pass the input to the car!
             float h = SimpleInput.GetAxis("Horizontal");
             input = CrossPlatformInputManager.GetAxis("Vertical");
-#if !MOBILE_INPUT
-            handbrake = CrossPlatformInputManager.GetAxis("Jump");    
-#endif
+// #if !MOBILE_INPUT
+            handbrake = CrossPlatformInputManager.GetAxis("Jump");
+            Debug.Log(CrossPlatformInputManager.GetAxis("Jump")) ;
+// #endif
  m_Car.Move(h, input, input, handbrake);
         }
 
