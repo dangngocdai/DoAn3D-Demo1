@@ -20,7 +20,7 @@ namespace UnityStandardAssets.CinematicEffects
         /// Checks if the ambient-only mode is supported under the current settings.
         public bool isAmbientOnlySupported
         {
-            get { return targetCamera.hdr && occlusionSource == OcclusionSource.GBuffer; }
+            get { return occlusionSource == OcclusionSource.GBuffer; }//targetCamera.hdr && 
         }
 
         /// Checks if the G-buffer is available
@@ -57,9 +57,9 @@ namespace UnityStandardAssets.CinematicEffects
                 switch (settings.sampleCount)
                 {
                     case SampleCount.Lowest: return 3;
-                    case SampleCount.Low:    return 6;
+                    case SampleCount.Low: return 6;
                     case SampleCount.Medium: return 12;
-                    case SampleCount.High:   return 20;
+                    case SampleCount.High: return 20;
                 }
                 return Mathf.Clamp(settings.sampleCountValue, 1, 256);
             }
@@ -268,12 +268,12 @@ namespace UnityStandardAssets.CinematicEffects
             m.SetFloat("_TargetScale", downsampling ? 0.5f : 1);
 
             // Occlusion source  
-            if (occlusionSource == OcclusionSource.GBuffer)  
-                m.EnableKeyword("_SOURCE_GBUFFER");  
-            else if (occlusionSource == OcclusionSource.DepthTexture)  
-                m.EnableKeyword("_SOURCE_DEPTH");  
-            else  
-                m.EnableKeyword("_SOURCE_DEPTHNORMALS");  
+            if (occlusionSource == OcclusionSource.GBuffer)
+                m.EnableKeyword("_SOURCE_GBUFFER");
+            else if (occlusionSource == OcclusionSource.DepthTexture)
+                m.EnableKeyword("_SOURCE_DEPTH");
+            else
+                m.EnableKeyword("_SOURCE_DEPTHNORMALS");
 
             // Sample count
             if (sampleCount == SampleCount.Lowest)
@@ -300,11 +300,11 @@ namespace UnityStandardAssets.CinematicEffects
                 targetCamera.AddCommandBuffer(CameraEvent.BeforeReflections, aoCommands);
 
             // Enable depth textures which the occlusion source requires.  
-            if (occlusionSource == OcclusionSource.DepthTexture)  
-                targetCamera.depthTextureMode |= DepthTextureMode.Depth;  
+            if (occlusionSource == OcclusionSource.DepthTexture)
+                targetCamera.depthTextureMode |= DepthTextureMode.Depth;
 
-            if (occlusionSource != OcclusionSource.GBuffer)  
-                targetCamera.depthTextureMode |= DepthTextureMode.DepthNormals;  
+            if (occlusionSource != OcclusionSource.GBuffer)
+                targetCamera.depthTextureMode |= DepthTextureMode.DepthNormals;
         }
 
         void OnDisable()
