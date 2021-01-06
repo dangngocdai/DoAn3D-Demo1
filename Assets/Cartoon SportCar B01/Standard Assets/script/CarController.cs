@@ -177,13 +177,13 @@ namespace UnityStandardAssets.Vehicles.Car
             TractionControl();
         }
 
-        /// <summary>
-        /// Update is called every frame, if the MonoBehaviour is enabled.
-        /// </summary>
-        void Update()
-        {
-            Debug.Log("Daisdas" + m_WheelColliders[2].brakeTorque);
-        }
+        // /// <summary>
+        // /// Update is called every frame, if the MonoBehaviour is enabled.
+        // /// </summary>
+        // void Update()
+        // {
+        //     Debug.Log("Daisdas" + m_WheelColliders[2].brakeTorque);
+        // }
         private void CapSpeed()
         {
             float speed = m_Rigidbody.velocity.magnitude;
