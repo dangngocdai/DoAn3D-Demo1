@@ -7,7 +7,7 @@ public class ItemCauHoi : MonoBehaviour
 {
     int indexOptionSelect = 0;
     [SerializeField]
-    int indexOptionTrue = 0;
+    int indexOptionTrue = 0, indexCauHoi = 0;
     [SerializeField]
     Button btnXacNhan;
 
@@ -24,6 +24,7 @@ public class ItemCauHoi : MonoBehaviour
         if (indexOptionTrue == indexOptionSelect)
         {
             //Dung
+            CauHoiManager.Instance.SetCauHoi(indexCauHoi);
         }
         else
         {
