@@ -23,7 +23,7 @@ public class TriggerCauHoi : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && indexCauHoi != 0 && CauHoiManager.Instance.TraLoiDungCau(indexCauHoi))
+        if (other.CompareTag("Player") && indexCauHoi != 0 && !CauHoiManager.Instance.TraLoiDungCau(indexCauHoi))
         {
             CauHoiManager.Instance.ShowCauHoi(indexCauHoi);
             collider.enabled = false;
